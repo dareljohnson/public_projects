@@ -1,0 +1,153 @@
+﻿@{
+    Page.Title    = "Create an account";
+    
+    var sql       = string.Empty;
+    var firstname = Request["firstname"];
+    var lastname  = Request["lastname"];
+    var username  = Request["username"];
+    var password  = Request["password"];
+    var email     = Request["email"];
+    var email2    = Request["email2"];
+  
+    if(IsPost){
+        if(firstname.IsEmpty() ){
+            ModelState.AddError("firstname", "Please provide a first name");
+        }
+        if(lastname.IsEmpty() ){
+            ModelState.AddError("lastname", "Please provide a last name");
+        }
+        if(username.IsEmpty() ){
+            ModelState.AddError("username", "You must provide a user name");
+        }
+        if(password.IsEmpty() ){
+            ModelState.AddError("password", "You must provide a password");
+        }
+        if(email.IsEmpty() ){
+            ModelState.AddError("email", "Please provide your email address");
+        }
+        if(!email.IsEmpty() && !Functions.IsValidEmail(email) ){
+            ModelState.AddError("email", "Please provide a valid email address");
+        }
+        if(email2 != email ){
+            ModelState.AddError("email2", "Your email addresses must match!");
+        }
+        if(!ModelState.IsValid ){
+            ModelState.AddFormError(@"Please fix the errors below before resubmitting the form");
+        }
+        else{
+        // Open database connection
+        var db      = Database.Open("Classifieds");
+        // create an Anonymous object and associate user variables with table columns in Users table
+        var user    = new {
+                            FirstName = firstname, 
+                            LastName = lastname, 
+                            Email = email
+        }; 
+        
+                try{
+                    // populate users and acount tables(SQL), and generate account token
+                    var token           = WebSecurity.CreateUserAndAccount(username, password, user, true);
+                    // get the base domain Url of the site
+                    var hostUrl         = Request.Url.GetComponents(UriComponents.SchemeAndServer, UriFormat.Unescaped);
+                    // Remove any HTML or script elements form Url and convert them to strings
+                    var queryString     = HttpUtility.UrlEncode(token);
+                    var confirm         = "~/Account/Confirm?confirmationCode=";
+                    // construct the confirmation Url
+                    var confirmationUrl = hostUrl + VirtualPathUtility.ToAbsolute(confirm + queryString);
+                    // construct the confirmation email message
+                    var message         = "<p>Your confirmation code is: " + token + "</p>" + 
+                                          "<p>Visit <a href=\"" + confirmationUrl + "\">" + 
+                                          confirmationUrl + "</a>" + " to activate your account.</p>";
+                    
+                    // send the confirmation email to new user's email address, so that
+                    // user can click to confirm account instead of entering the code manualy
+                    WebMail.Send(
+                                to: email,
+                                subject: "Please confirm your account",
+                                body: message,
+                                isBodyHtml: true
+                    );
+                    // add users to roles
+                    Roles.AddUsersToRoles( new[]{username}, new[]{"Seller","Bidder"});
+                    
+                    // redirect new user to thank you page
+                    Response.Redirect("~/Account/Thanks");
+                }
+                catch(MembershipCreateUserException ex){
+                    
+                    if(ex.StatusCode == MembershipCreateStatus.DuplicateUserName){
+                        ModelState.AddError("username", "That user name already in use. Please choose another.");
+                        ModelState.AddFormError(@"Please fix the errors below before resubmitting the form");
+                    }
+                    else{
+                        ModelState.AddFormError("Something went wrong. Please try again");
+                    }
+                }
+        }
+    }
+}
+
+<h2>Create an account</h2>
+<p>Use the form below to create an account with the site. Then you can post items for sale and bid on other items. Please ensure that you complete all fields marked with an asterisk *</p>
+<form method="post">
+    <fieldset>
+        <legend>Register</legend>
+        <br/>
+        @Html.ValidationSummary(true)
+        <div>
+            <label for="firstname">First Name*</label>
+        </div>
+        <div>
+            <input type="text" id="firstname" name="firstname" value="@firstname" />
+            @Html.ValidationMessage("firstname")
+        </div>
+        <br/>
+        <div>
+            <label for="lastname">Last Name*</label>
+        </div>
+        <div>
+            <input type="text" id="lastname" name="lastname" value="@lastname" />
+            @Html.ValidationMessage("lastname")
+        </div>
+        <br/>
+        <div>
+            <label for="username">User Name*</label>
+        </div>        
+        <div>
+            <input type="text" id="username" name="username" value="@username" />
+            @Html.ValidationMessage("username")
+        </div>
+        <br/>
+        <div>
+            <label for="password">Password*</label>
+        </div>        
+        <div>
+            <input type="password" id="password" name="password" />
+            @Html.ValidationMessage("password")
+        </div>
+        <br/>
+        <div>
+            <label for="email">Email*</label>
+        </div>        
+        <div>
+            <input type="text" id="email" name="email" value="@email" />
+            @Html.ValidationMessage("email")
+        </div>
+        <br/>
+        <div>
+            <label for="email2">Re-enter your email*</label>
+        </div>        
+        <div>
+            <input type="text" id="email2" name="email2" value="@email2" />
+            @Html.ValidationMessage("email2")
+        </div>
+        <br/>
+        <div>
+            <input type="submit" name="Submit" value="Register" />
+        </div>        
+    </fieldset>
+</form> 
+
+
+
+

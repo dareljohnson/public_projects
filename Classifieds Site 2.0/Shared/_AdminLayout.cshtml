@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Admin</title>
+        <link href="@Href("~/Content/StyleSheet.css")" rel="stylesheet" type="text/css"/>
+        <script src="@Href("~/Scripts/jquery-1.7.2.min.js")" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Admin</h1>
+            <a href="@Href("~/")">Main site</a>
+            |
+            <a href="@Href("~/Admin/CreateCategory")">Create Category</a>
+            |
+            <a href="@Href("~/Admin/UpdateCategory")">Update Category</a>
+            |
+            <a href="@Href("~/Admin/DeleteCategory")">Delete Category</a>
+            |
+            <a href="@Href("~/Admin/DeleteCategories")">Delete Categories</a>
+            <br/>
+            <a href="@Href("~/Admin/CreateRole")">Create Role</a>
+            |
+            <a href="@Href("~/Admin/AddUsersToRoles")">Add User To Role</a>
+            |
+            <a href="@Href("~/Admin/RemoveUserFromRole")">Remove User From Role</a>
+            <hr/>
+            @RenderBody()
+        </div>
+    </body>
+</html>
