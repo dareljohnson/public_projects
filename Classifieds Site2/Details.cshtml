@@ -1,0 +1,35 @@
+﻿@{
+    Page.Description = "This item has been posted recently by one of our sellers in your area."; 
+        
+    dynamic item = null;
+    
+    /*if(!Request["id"].IsEmpty() && Request["id"].IsInt() ){*/
+
+    // using custom SEO Friendly Urls
+    // check UrlData for valid data values
+    if(!UrlData[0].IsEmpty() && UrlData[0].IsInt() ){
+        var db  = Database.Open("Classifieds");
+        var sql = "SELECT * FROM Items I ";
+            sql+= " INNER JOIN Categories C ON I.CategoryId = C.CategoryId ";
+            sql+= " INNER JOIN Users U ON I.UserId = U.UserId ";
+            sql+= " WHERE Id = @0";
+        
+        ///item    = db.QuerySingle(sql, Request["id"]);
+        item    = db.QuerySingle(sql, UrlData[0]);
+        if(!UrlData[1].Contains( item.Title.Replace(" ","-")) ){
+            var validUrl = Functions.SeoFriendly("Details", item.Id, item.Title);
+            Response.RedirectPermanent(validUrl);
+        }
+    }
+}
+
+@if(item != null){
+    Page.Title   = "Details Page of Item On Sale: " + item.Title;
+    <h1>Details</h1>
+    <h3>@item.Title</h3>
+    <p>@item.Description</p>
+    <p>Price: @item.Price.ToString("c")</p>
+    <p>Condition: @item.Condition</p>
+    <p>Posted on: @item.DatePosted.ToString("D") in the @item.Category category</p>
+    <p>Posted by seller: @item.FirstName @item.LastName.Substring(0,1)</p>
+}    

@@ -1,0 +1,46 @@
+﻿@{
+    var message  = "";
+    var sql = "";
+    var db  = Database.Open("Classifieds");
+    
+    if(!Request["categoryId"].IsEmpty() ){
+        sql = "DELETE FROM Categories WHERE CategoryId IN({0})";
+        try{
+            db.ExecuteIn(sql, Request["categoryId"]);
+            message = "Categories deleted. Delete another?"  ;
+        }
+        catch(Exception ex){
+            message = "One or more Categories could not be deleted. Other references exist";
+        }
+    }
+    /// retrun all rows for the <form><select><option>
+    /// this code block get excuted the first time the page loads
+    sql ="SELECT * FROM Categories";
+    var categories = db.Query(sql);
+}
+<!-- jQuery -->
+<script type="text/javascript">
+    $(function(){
+        $('#delete').click(function(){
+            return confirm('Are you sure you want to delete?');
+        });
+    });
+</script>
+
+<form method="post">
+    <fieldset>
+        <legend>Delete Categories</legend>
+        <div>@message</div><br/>
+        <div>
+            Select Categories to delete:
+            <div>
+                @foreach(var cat in categories){
+                    <input type="checkbox" name="categoryId" value="@cat.CategoryId"/>@cat.Category<br/>
+                }
+            </div>
+            <br/>
+            <!-- include id="delete" to reference jQuery -->
+            <input type="submit" id="delete" value="Delete"/>
+        </div>
+    </fieldset>
+</form>

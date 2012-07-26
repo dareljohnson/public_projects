@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Shared/_AdminLayout.cshtml";
+    
+    //WebSecurity.RequireAuthenticatedUser();
+        
+    // if user is not in Admin role
+    if(!Roles.IsUserInRole("Admin") ){
+        // send user to home page
+        Response.Redirect("~/");
+    }
+}

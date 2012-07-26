@@ -1,0 +1,38 @@
+﻿@{
+    var message   = "";
+    var role      = Request["role"];
+    
+    if(IsPost){
+        // check if the role textbox is empty
+        if(!role.IsEmpty() ){
+            // check the database to see if Role
+            // already exists
+            if(!Roles.RoleExists(role) ){
+                // create Role in the database
+                Roles.CreateRole(role);
+                message = role + " added as Role";
+            }
+            else{
+                message = "That role already exists";
+            }
+        }
+    }
+}
+
+<form method="post">
+    <div>@message</div>
+    <fieldset>
+        <legend>Create Role</legend>
+        <br/>
+        <div>
+            <label for="role">Role:</label>
+        </div>
+         <div>
+            <input type="text" name="role" value="@Request["role"]"/>
+        </div>
+        <br/>
+         <div>
+            <input type="submit" value="Add Role"/>
+        </div>
+    </fieldset>
+</form>    

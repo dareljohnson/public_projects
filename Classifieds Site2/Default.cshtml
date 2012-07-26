@@ -1,0 +1,96 @@
+﻿@{
+    Layout = "~/Shared/_Layout.cshtml";
+    /* PageData collection */
+    Page.Title = "Listing Page of Items Posted by Sellers";
+    Page.Description = "We have an active listing of items for sale, posted by sellers in your area.";
+
+    // WebCaching
+    var data = WebCache.Get("cachedData");
+    /*var fromCache = " From Cache";*/
+
+    // protect against NullReference Exceptions
+    if(data == null){
+        /*fromCache = " Not From Cache"; */
+
+        var db = Database.Open("Classifieds");
+        var sql= @"SELECT Id, Title, Description, Price, Items.Categoryid, Category, DatePosted";
+            sql+= @" FROM Items JOIN Categories"; 
+            sql+= @" ON Items.Categoryid = Categories.Categoryid";
+    
+            data= db.Query(sql).OrderByDescending( c => c.dateposted );
+
+    }
+    
+    /*var db = Database.Open("Classifieds");
+    var sql= @"SELECT Id, Title, Description, Price, Items.Categoryid, Category, DatePosted";
+       sql+= @" FROM Items JOIN Categories"; 
+       sql+= @" ON Items.Categoryid = Categories.Categoryid";
+    
+       data= db.Query(sql).OrderByDescending( c => c.dateposted ); */
+
+    // Set the Cache interval and sliding expiration
+    WebCache.Set("cachedData", data, 10, true);
+
+    var grid = new WebGrid( data, ajaxUpdateContainerId: "grid");
+    /// var grid= new WebGrid( data); for testing purposes only
+}
+
+<!-- ADD STATIC (html) or DYNAMIC CONTENT (Razor Scripts), BELOW THIS SECTION -->
+
+ 
+<h1>Latest Items For Sale</h1>
+<!-- <h1>Latest Items For Sale @@fromCache</h1> -->
+<div id="grid">
+    @grid.GetHtml(
+                tableStyle: "grid",
+                alternatingRowStyle: "alternate",
+                headerStyle: "gridheader",
+                footerStyle: "gridfooter",
+                columns: grid.Columns(
+                                grid.Column(/*
+                                        columnName: "Id",
+                                        header: string.Empty, 
+                                        format: @<text>@item.GetSelectLink()</text>
+                                        */
+                                        /* create SEO Friendly Urls */
+                                        format: @<a href="@Href(Functions.SeoFriendly("Details", item.id, item.Title))">Details</a>
+                                        /* format: @<a href="@Href("~/Details.cshtml?id=" + item.id )">Details</a> */
+                                        ),
+                                grid.Column(
+                                        columnName: "Title"
+                                        ),   
+                                grid.Column(
+                                        columnName: "Description"
+                                        ),
+                                grid.Column(
+                                        columnName: "Price",
+                                        format: @<text>@item.Price.ToString("c")</text>
+                                        ), 
+                                grid.Column(
+                                        columnName: "Category"
+                                        ), 
+                                grid.Column(
+                                        columnName: "DatePosted",
+                                        header: "Date Posted",
+                                        style: "dateWidth",
+                                        format: @<text>@item.DatePosted.ToString("MM/dd/yyyy hh:mm:ss")</text>
+                                        )        
+                                ) 
+                )
+</div>
+<!-- For testing purposes only -->
+<!-- 
+@@if(grid.HasSelection){
+    dynamic Item = grid.SelectedRow;
+    <p>The select item is: @@Item.Title with an ID of @@Item.Id</p>
+}
+-->
+
+
+
+
+
+<!-- FOOTER SECTION 
+section footer{
+    &copy; Wrox Classifieds DateTime.Now.Year
+}-->
