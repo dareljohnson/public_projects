@@ -1,0 +1,82 @@
+﻿@{
+    Page.Title     = "Log In";
+    
+    var username   = Request.Form["username"];
+    var password   = Request.Form["password"];
+    var rememberMe = false;
+    
+    if(IsPost){
+        rememberMe = Request.Form["rememberMe"].AsBool();
+        
+        if(username.IsEmpty() ){
+            ModelState.AddError("username","You must specify a username");
+        }
+        
+        if(password.IsEmpty() ){
+            ModelState.AddError("password","You must provide your password");
+        }
+        
+        if(!ModelState.IsValid){
+            ModelState.AddFormError(@"Please fix errors below before resubmitting the form");
+        }
+        else{
+            // check if username & password are valid and check if a persistent cookie
+            // exist for user
+            if(WebSecurity.Login(username, password, rememberMe) ){
+                // try to get the Url from where the user came from
+                var returnUrl = Request.QueryString["ReturnUrl"];
+                
+                // Is there a value in the query string (Url) from the page the
+                // user tried to access? 
+                if(returnUrl.IsEmpty() ){
+                    // Send user to home page
+                    Response.Redirect("~/");
+                }
+                else{
+                    // return user to the page they were trying to access
+                    Context.RedirectLocal(returnUrl);
+                }
+            }
+            else{
+                ModelState.AddFormError(@"Your credentials did not match a valid account. Please try again");
+            }
+        }
+    }
+}
+
+<p>
+    Please enter your username and password below. If you don't have an account,
+    visit the <a href="@Href("~/Account/Register")">registration page</a> and
+    create one.
+</p>    
+
+<form method="post">
+    <fieldset>
+        <legend>Log In to Your Account</legend>
+        <br/>
+        @Html.ValidationSummary(true)
+        
+        <div>
+            <label for="username">User Name*</label>
+        </div>
+        <div>
+            <input type="text" id="username" name="username" value="@username"/>
+        </div>
+        <br/>
+        <div>
+            <label for="password">Password*</label>
+        </div>
+        <div>
+            <input type="password" id="password" name="password"/>
+        </div>
+        <br/>
+        <div>
+            <input type="checkbox" name="rememberMe" value="true" @( rememberMe ? "checked=\"checked\"" : string.Empty ) />
+            <label for="rememberMe">Remember Me</label>
+        </div>
+        <br/>
+        <div>
+            <input type="submit" value="login" title="Login"/>
+        </div>
+    </fieldset>
+</form>

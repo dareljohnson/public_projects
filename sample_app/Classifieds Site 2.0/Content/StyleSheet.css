@@ -1,0 +1,178 @@
+/*
+-------------------------------------------------------------
+LAYOUT STYLES FOR SITE
+-------------------------------------------------------------
+-------------------------------------------------------------
+HTML ELEMENTS
+-------------------------------------------------------------
+*/
+
+body {
+    font-family:Verdana, Helvetica, sans-serif;
+    font-size: 80%;
+    /* text in the body */
+    color: #5f5f5f; 
+    padding:0;
+    margin:0;
+    background-color: White;
+}
+
+/*
+-------------------------------------------------------------
+SITE STRUCTURE - STYLES
+-------------------------------------------------------------
+*/
+
+/* header, navstrip */
+#header, #navstrip{
+    width:100%;
+    background-color: #4b4b4b;
+}
+
+#header{
+    min-height: 70px;
+    /* text in the header */
+    color: white;  
+}
+
+#navstrip{
+    border-bottom: 2px solid #c3c4c8;
+}
+
+/* head, nav, wrapper  */
+#head, #nav, #wrapper{
+    width: 900px;
+    margin:auto;
+}
+
+#head{
+    font: normal 4em Tahoma;
+    line-height: 2em;
+}
+
+#nav{
+    background-color: #717171;
+    line-height: 25px;
+    /* text in the navigation */
+    color:White;  
+}
+
+#wrapper{
+    border:2px solid #717171;
+}
+
+/*  nav link, hover, visited link  */
+#nav a, #nav a:hover, #nav:visited{
+    color:White;
+    font-size: 1.0em;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 5px 15px;
+}
+
+#left_column, #content{
+    float:left;
+    min-height: 400px;
+}
+
+#left_column{
+    width: 180px;
+    background-color: #e8e8e8;
+}
+
+#content{
+    width: 700px;
+    background-color:White;
+    padding: 10px;
+}
+
+#footer{
+    clear:both;
+    font-size: 90%;
+    color: #999;
+    text-align:center;
+    padding-bottom: 10px;
+}
+
+#nav, #login{
+    border-bottom: 1px solid black;
+    padding-bottom: 4px;
+}
+/*
+-------------------------------------------------------------
+FORM STYLES
+-------------------------------------------------------------
+*/
+
+/* create a border legend around fieldset form elements*/
+legend{
+    color:#84a24a;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: "Arial Narrow";
+}
+
+.field-validation-error, .validation-summary-errors{
+    color:Red;
+}
+
+.error{
+    color:Red;
+}
+input.error, textarea.error, select.error{
+    border: 1px solid red;
+    background-color: #ffbfbf;
+    color: Black;
+}
+/*
+-------------------------------------------------------------
+FONT STYLES
+-------------------------------------------------------------
+*/
+
+
+
+/*
+-------------------------------------------------------------
+PANEL STYLES
+-------------------------------------------------------------
+*/
+
+
+/*
+-------------------------------------------------------------
+GRID STYLES for WebGrid method: GetHtml()
+-------------------------------------------------------------
+*/
+.grid{
+    background: #fff;
+    width: 650px;
+    border-collapse:collapse;
+}
+
+.grid th{
+    font-size: 1.1em;
+    font-weight: normal;
+    color: #039;
+    padding: 10px 8px;
+    border-bottom: 2px solid #728059;
+    text-align: left;
+}
+
+.grid td{
+    border-bottom: 1px solid #ccc;
+    padding: 4px 6px;
+}
+
+.alternate{
+    background: #d3ff80;
+}
+
+.gridheader, .gridfooter{
+    background: #9ebf60;
+}
+
+.dateWidth{
+    width: 100px;
+}
