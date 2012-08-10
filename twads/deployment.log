@@ -1,0 +1,101 @@
+2012-08-09T16:54:46+00:00 app[web.1]: 
+2012-08-09T16:54:46+00:00 app[web.1]: Started GET "/static_pages/home" for 74.141.242.70 at 2012-08-09 16:54:46 +0000
+2012-08-09T16:54:47+00:00 app[web.1]: Connecting to database specified by DATABASE_URL
+2012-08-09T16:54:47+00:00 app[web.1]: Processing by StaticPagesController#home as HTML
+2012-08-09T16:54:47+00:00 app[web.1]:   Rendered static_pages/home.html.erb within layouts/application (6.9ms)
+2012-08-09T16:54:47+00:00 app[web.1]: Completed 200 OK in 55ms (Views: 54.5ms | ActiveRecord: 0.0ms)
+2012-08-09T16:54:47+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/static_pages/home dyno=web.1 queue=0 wait=0ms service=1025ms status=200 bytes=633
+2012-08-09T16:54:47+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/assets/application-7270767b2a9e9fff880aa5de378ca791.css dyno=web.1 queue=0 wait=0ms service=11ms status=200 bytes=0
+2012-08-09T16:54:47+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/assets/application-327fbd2ec6a53a03fe9710ba5d84402e.js dyno=web.1 queue=0 wait=0ms service=9ms status=200 bytes=99548
+2012-08-09T16:54:48+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/favicon.ico dyno=web.1 queue=0 wait=0ms service=16ms status=200 bytes=0
+2012-08-09T18:00:35+00:00 heroku[web.1]: Idling
+2012-08-09T18:00:38+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2012-08-09T18:00:39+00:00 app[web.1]: [2012-08-09 18:00:39] ERROR SignalException: SIGTERM
+2012-08-09T18:00:39+00:00 app[web.1]: 	/usr/local/lib/ruby/1.9.1/webrick/server.rb:90:in `select'
+2012-08-09T18:00:49+00:00 heroku[web.1]: Error R12 (Exit timeout) -> At least one process failed to exit within 10 seconds of SIGTERM
+2012-08-09T18:00:49+00:00 heroku[web.1]: Stopping remaining processes with SIGKILL
+2012-08-09T18:00:50+00:00 heroku[web.1]: Process exited with status 137
+2012-08-09T18:00:50+00:00 heroku[web.1]: State changed from up to down
+2012-08-09T18:00:50+00:00 heroku[web.1]: State changed from down to starting
+2012-08-09T18:00:52+00:00 heroku[web.1]: Starting process with command `bundle exec rails server -p 49648`
+2012-08-09T18:00:55+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/1/4/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:5)
+2012-08-09T18:00:55+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/1/4/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:5)
+2012-08-09T18:00:58+00:00 app[web.1]: [2012-08-09 18:00:58] INFO  WEBrick 1.3.1
+2012-08-09T18:00:58+00:00 app[web.1]: [2012-08-09 18:00:58] INFO  WEBrick::HTTPServer#start: pid=2 port=49648
+2012-08-09T18:00:58+00:00 app[web.1]: [2012-08-09 18:00:58] INFO  ruby 1.9.2 (2011-07-09) [x86_64-linux]
+2012-08-09T18:00:59+00:00 heroku[web.1]: State changed from starting to up
+2012-08-09T19:06:57+00:00 heroku[web.1]: Idling
+2012-08-09T19:07:00+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2012-08-09T19:07:01+00:00 app[web.1]: [2012-08-09 19:07:01] ERROR SignalException: SIGTERM
+2012-08-09T19:07:01+00:00 app[web.1]: 	/usr/local/lib/ruby/1.9.1/webrick/server.rb:90:in `select'
+2012-08-09T19:07:10+00:00 heroku[web.1]: Error R12 (Exit timeout) -> At least one process failed to exit within 10 seconds of SIGTERM
+2012-08-09T19:07:10+00:00 heroku[web.1]: Stopping remaining processes with SIGKILL
+2012-08-09T19:07:12+00:00 heroku[web.1]: Process exited with status 137
+2012-08-09T19:07:12+00:00 heroku[web.1]: State changed from up to down
+2012-08-09T23:01:27+00:00 heroku[web.1]: Unidling
+2012-08-09T23:01:27+00:00 heroku[web.1]: State changed from down to starting
+2012-08-09T23:01:32+00:00 heroku[web.1]: Starting process with command `bundle exec rails server -p 12494`
+2012-08-09T23:01:42+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/1/4/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:5)
+2012-08-09T23:01:42+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/1/4/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:5)
+2012-08-09T23:01:50+00:00 app[web.1]: [2012-08-09 23:01:50] INFO  WEBrick 1.3.1
+2012-08-09T23:01:50+00:00 app[web.1]: [2012-08-09 23:01:50] INFO  ruby 1.9.2 (2011-07-09) [x86_64-linux]
+2012-08-09T23:01:50+00:00 app[web.1]: [2012-08-09 23:01:50] INFO  WEBrick::HTTPServer#start: pid=2 port=12494
+2012-08-09T23:01:51+00:00 heroku[web.1]: State changed from starting to up
+2012-08-09T23:01:51+00:00 app[web.1]: => Booting WEBrick
+2012-08-09T23:01:51+00:00 app[web.1]: => Rails 3.2.6 application starting in production on http://0.0.0.0:12494
+2012-08-09T23:01:51+00:00 app[web.1]: => Ctrl-C to shutdown server
+2012-08-09T23:01:51+00:00 app[web.1]: 
+2012-08-09T23:01:51+00:00 app[web.1]: 
+2012-08-09T23:01:51+00:00 app[web.1]: => Call with -d to detach
+2012-08-09T23:01:51+00:00 app[web.1]: Started GET "/static_pages/home" for 74.141.242.70 at 2012-08-09 23:01:51 +0000
+2012-08-09T23:01:53+00:00 app[web.1]: Connecting to database specified by DATABASE_URL
+2012-08-09T23:01:53+00:00 app[web.1]: Processing by StaticPagesController#home as HTML
+2012-08-09T23:01:53+00:00 app[web.1]:   Rendered static_pages/home.html.erb within layouts/application (7.2ms)
+2012-08-09T23:01:53+00:00 app[web.1]: Completed 200 OK in 44ms (Views: 43.1ms | ActiveRecord: 0.0ms)
+2012-08-09T23:01:53+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/static_pages/home dyno=web.1 queue=0 wait=0ms service=1884ms status=200 bytes=633
+2012-08-09T23:01:53+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/assets/application-7270767b2a9e9fff880aa5de378ca791.css dyno=web.1 queue=0 wait=0ms service=8ms status=200 bytes=0
+2012-08-09T23:01:54+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/assets/application-327fbd2ec6a53a03fe9710ba5d84402e.js dyno=web.1 queue=0 wait=0ms service=34ms status=200 bytes=99548
+2012-08-09T23:01:54+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/favicon.ico dyno=web.1 queue=0 wait=0ms service=6ms status=200 bytes=0
+2012-08-10T00:12:21+00:00 heroku[web.1]: Idling
+2012-08-10T00:12:25+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2012-08-10T00:12:26+00:00 app[web.1]: [2012-08-10 00:12:26] ERROR SignalException: SIGTERM
+2012-08-10T00:12:26+00:00 app[web.1]: 	/usr/local/lib/ruby/1.9.1/webrick/server.rb:90:in `select'
+2012-08-10T00:12:36+00:00 heroku[web.1]: Error R12 (Exit timeout) -> At least one process failed to exit within 10 seconds of SIGTERM
+2012-08-10T00:12:36+00:00 heroku[web.1]: Stopping remaining processes with SIGKILL
+2012-08-10T00:12:38+00:00 heroku[web.1]: Process exited with status 137
+2012-08-10T00:12:38+00:00 heroku[web.1]: State changed from up to down
+2012-08-10T00:55:28+00:00 heroku[slugc]: Slug compilation started
+2012-08-10T00:55:35+00:00 heroku[web.1]: Unidling
+2012-08-10T00:55:35+00:00 heroku[web.1]: State changed from down to starting
+2012-08-10T00:55:38+00:00 heroku[web.1]: Starting process with command `bundle exec rails server -p 30101`
+2012-08-10T00:55:42+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/1/4/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:5)
+2012-08-10T00:55:42+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/1/4/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:5)
+2012-08-10T00:55:45+00:00 app[web.1]: [2012-08-10 00:55:45] INFO  ruby 1.9.2 (2011-07-09) [x86_64-linux]
+2012-08-10T00:55:45+00:00 app[web.1]: [2012-08-10 00:55:45] INFO  WEBrick 1.3.1
+2012-08-10T00:55:45+00:00 app[web.1]: [2012-08-10 00:55:45] INFO  WEBrick::HTTPServer#start: pid=2 port=30101
+2012-08-10T00:55:45+00:00 heroku[web.1]: State changed from starting to up
+2012-08-10T00:55:48+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/ dyno=web.1 queue=0 wait=0ms service=47ms status=200 bytes=5906
+2012-08-10T00:55:48+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/assets/rails.png dyno=web.1 queue=0 wait=0ms service=14ms status=200 bytes=6646
+2012-08-10T00:55:57+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/ dyno=web.1 queue=0 wait=0ms service=7ms status=304 bytes=0
+2012-08-10T00:55:57+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/assets/rails.png dyno=web.1 queue=0 wait=0ms service=6ms status=304 bytes=0
+2012-08-10T00:55:59+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/ dyno=web.1 queue=0 wait=0ms service=6ms status=304 bytes=0
+2012-08-10T00:55:59+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/assets/rails.png dyno=web.1 queue=0 wait=0ms service=7ms status=304 bytes=0
+2012-08-10T00:56:08+00:00 heroku[api]: Release v14 created by membership_signon@apptaris.com
+2012-08-10T00:56:08+00:00 heroku[api]: Deploy 329fba1 by membership_signon@apptaris.com
+2012-08-10T00:56:08+00:00 heroku[web.1]: State changed from up to starting
+2012-08-10T00:56:08+00:00 heroku[slugc]: Slug compilation finished
+2012-08-10T00:56:09+00:00 heroku[web.1]: Starting process with command `bundle exec rails server -p 59970`
+2012-08-10T00:56:11+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/ dyno=web.1 queue=0 wait=0ms service=62ms status=304 bytes=0
+2012-08-10T00:56:12+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/1/4/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:5)
+2012-08-10T00:56:12+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/1/4/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:5)
+2012-08-10T00:56:12+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2012-08-10T00:56:13+00:00 app[web.1]: [2012-08-10 00:56:13] ERROR SignalException: SIGTERM
+2012-08-10T00:56:13+00:00 app[web.1]: 	/usr/local/lib/ruby/1.9.1/webrick/server.rb:90:in `select'
+2012-08-10T00:56:14+00:00 app[web.1]: [2012-08-10 00:56:14] INFO  WEBrick 1.3.1
+2012-08-10T00:56:14+00:00 app[web.1]: [2012-08-10 00:56:14] INFO  ruby 1.9.2 (2011-07-09) [x86_64-linux]
+2012-08-10T00:56:14+00:00 app[web.1]: [2012-08-10 00:56:14] INFO  WEBrick::HTTPServer#start: pid=2 port=59970
+2012-08-10T00:56:15+00:00 heroku[web.1]: State changed from starting to up
+2012-08-10T00:56:16+00:00 heroku[router]: GET apptaris-sampleapp1.herokuapp.com/assets/rails.png dyno=web.1 queue=0 wait=0ms service=21ms status=200 bytes=6646
+2012-08-10T00:56:21+00:00 heroku[web.1]: Error R12 (Exit timeout) -> At least one process failed to exit within 10 seconds of SIGTERM
+2012-08-10T00:56:21+00:00 heroku[web.1]: Stopping remaining processes with SIGKILL
+2012-08-10T00:56:23+00:00 heroku[web.1]: Process exited with status 137

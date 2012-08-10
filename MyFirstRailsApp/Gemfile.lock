@@ -106,6 +106,6 @@ DEPENDENCIES
   coffee-rails (~> 3.2.2)
   jquery-rails (= 2.0.0)
   rails (= 3.2.6)
-  sass-rails (~> 3.2.4)
+  sass-rails (~> 3.2.4bundle)
   sqlite3 (= 1.3.5)
   uglifier (>= 1.2.3)

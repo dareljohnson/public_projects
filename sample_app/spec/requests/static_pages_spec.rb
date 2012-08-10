@@ -1,84 +1,64 @@
 require 'spec_helper'
 
+ 
 describe "StaticPages" do
-
+ 
   # Static Content Page tests
-  let(:base_title) { "Ruby on Rails Tutorial Sample App" }
+  let(:base_title) { "Tweet My Ads - A Social Network From Classified Ads" }
+
+  # set the page variable. "it -- is the subject"
+  subject { page }
   
   describe "Home page" do
-    it "should have the content 'Ruby on Rails Tutorial'" do
+    before { visit root_path }
+    
+    it { should have_content('Ruby on Rails Tutorial')  }
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
       #get static_pages_index_path
       #response.status.should be(200)
       # when you
-      visit '/static_pages/home'
-      page.should have_content('Ruby on Rails Tutorial')
-    end
   end
   
   describe "Home page" do
-  
+    before { visit root_path }
+    
     # using have_selector for HTML tags
-    it "should have the h1 'Sample App'" do
-      visit '/static_pages/home'
-      page.should have_selector('h1', :text => 'Sample App')
-    end
+    it { should have_selector('h1', :text => 'Welcome to Tweet My Ads') }
+
+    it { should have_selector('title',
+                        :text => full_title(''rai)) }
     
-    it "should have the title 'Home'" do
-      visit '/static_pages/home'
-      page.should have_selector('title',
-                        :text => "#{base_title}")
-    end
-    
-    it "should have a custom page title" do
-      visit '/static_pages/home'
-      page.should_not have_selector('title', :text => '| Home')
-    end
-  end  
+    it { should_not have_selector('title', :text => '| Home')  }
+
+  end
    
   describe "Help page" do
-    it "should have the content 'Help' "do
-      visit '/static_pages/help'
-      page.should have_content('Help')
-    end
+    before { visit help_path }
     
-    it "should have the title 'Help'" do
-      visit '/static_pages/help'
-      page.should have_selector('title',
-                        :text => "#{base_title} | Help")
-    end
+    it { should have_content('Help')  }
+    
+    it { should have_selector('title',
+                        :text => "#{base_title} | Help")  }
   end  
   
   describe "About page" do
-    it "should have the content 'About Us' "do
-      visit '/static_pages/about'
-      page.should have_content('About Us')
-    end
+    before {  visit about_path }
     
-    it "should have the title 'About Us'" do
-      visit '/static_pages/about'
-      page.should have_selector('title',
-                    :text => "#{base_title} | About Us")
-    end
+    it { should have_content('About Us')  }
+
+    it { should have_selector('title',
+                    :text => "#{base_title} | About Us")  }
   end  
   
   describe "Contact page" do
-    it "should have the h1 'Contact Us' "do
-      visit '/static_pages/contact'
-      page.should have_selector('h1', :text => 'Contact Us')
-    end
+    before {  visit contact_path }
     
-    it "should have the title 'Contact Us'" do
-      visit '/static_pages/contact'
-      page.should have_selector('title',
-                    :text => "#{base_title} | Contact Us")
-    end
+    it { should have_selector('h1', :text => 'Contact Us')  }
+
+    it { should have_selector('title',
+                    :text => "#{base_title} | Contact Us")  }
     
-    it "should have an image lable 'Image' " do
-      visit '/static_pages/contact'
-      page.should have_selector('img')
-    end
-    
+    it { should have_selector('img')  }
   end 
   
   # describe "" do
