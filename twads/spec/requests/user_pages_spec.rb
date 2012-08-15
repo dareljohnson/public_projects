@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "UserPages" do
   
    # Static Content Page tests
-  let(:base_title) { "Tweet My Ads! - A Social Network From Classified Ads" }
+  let(:base_title) { "Tweet My Ads! - A Social Network For Classified Ads" }
   
   subject { page }
   

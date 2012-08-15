@@ -4,6 +4,8 @@ gem 'rails', '3.2.6'
 
 gem 'bootstrap-sass', '2.0.0'
 
+gem 'bcrypt-ruby', '3.0.1'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
@@ -38,6 +40,8 @@ gem 'jquery-rails', '2.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'
+
+gem 'annotate', '2.5.0', group: :development
 
 # Test gems on Macintosh OS X
 group :test do
